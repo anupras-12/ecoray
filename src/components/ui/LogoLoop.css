@@ -1,0 +1,126 @@
+.logoloop {
+  --logo-loop-gap: 52px;
+  --logo-loop-height: 32px;
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.logoloop--horizontal {
+  width: 100%;
+}
+
+.logoloop--vertical {
+  height: 100%;
+  width: max-content;
+}
+
+.logoloop--fade {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--logo-loop-fade), #000 calc(100% - var(--logo-loop-fade)), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 var(--logo-loop-fade), #000 calc(100% - var(--logo-loop-fade)), transparent);
+}
+
+.logoloop__track {
+  display: flex;
+  width: max-content;
+  animation: logo-loop-scroll var(--logo-loop-duration, 0s) linear infinite;
+  will-change: transform;
+}
+
+.logoloop--vertical .logoloop__track {
+  width: 100%;
+  flex-direction: column;
+}
+
+.logoloop[data-pause-hover]:hover .logoloop__track,
+.logoloop[data-pause-hover]:focus-within .logoloop__track,
+.logoloop[data-static] .logoloop__track {
+  animation-play-state: paused;
+}
+
+.logoloop[data-hover-speed]:hover .logoloop__track,
+.logoloop[data-hover-speed]:focus-within .logoloop__track {
+  animation-duration: var(--logo-loop-hover-duration, 0s) !important;
+}
+
+.logoloop__list {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--logo-loop-gap);
+  margin: 0;
+  padding: 0 var(--logo-loop-gap) 0 0;
+  list-style: none;
+}
+
+.logoloop--vertical .logoloop__list {
+  flex-direction: column;
+}
+
+.logoloop__item {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--logo-loop-height);
+}
+
+.logoloop__content {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--logo-loop-height) * 0.3);
+  color: inherit;
+  text-decoration: none;
+}
+
+.logoloop__content img,
+.logoloop__content svg {
+  display: block;
+  width: auto;
+  height: var(--logo-loop-height);
+  object-fit: contain;
+  transition: transform 220ms ease;
+}
+
+.logoloop--scale-hover .logoloop__content:hover img,
+.logoloop--scale-hover .logoloop__content:hover svg {
+  transform: scale(1.12);
+}
+
+.logoloop__label {
+  font-size: max(13px, calc(var(--logo-loop-height) * 0.48));
+  font-weight: 650;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.logoloop__content:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 5px;
+}
+
+@keyframes logo-loop-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.logoloop--vertical .logoloop__track {
+  animation-name: logo-loop-scroll-vertical;
+}
+
+@keyframes logo-loop-scroll-vertical {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logoloop__track {
+    animation: none;
+    transform: none;
+  }
+
+  .logoloop__content img,
+  .logoloop__content svg {
+    transition: none;
+  }
+}

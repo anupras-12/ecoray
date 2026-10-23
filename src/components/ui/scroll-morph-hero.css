@@ -1,0 +1,276 @@
+.scroll-morph-frame {
+  position: relative;
+  width: calc(100% - 48px);
+  height: 800px;
+  max-height: calc(100svh - 96px);
+  min-height: 560px;
+  margin: 24px auto;
+  overflow: hidden;
+  border: 1px solid #dce3d8;
+  border-radius: 8px;
+  background: #eef1e9;
+}
+
+.scroll-morph-hero {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #294838;
+  color: #fff;
+  font-family: 'Avenir Next', Avenir, 'Segoe UI', sans-serif;
+}
+
+.scroll-morph-image {
+  position: absolute;
+  inset: var(--morph-inset-y, 8%) var(--morph-inset-x, 7%);
+  overflow: hidden;
+  border-radius: var(--morph-radius, 10px);
+  will-change: inset, border-radius;
+}
+
+.scroll-morph-slide-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  object-fit: cover;
+  object-position: center 55%;
+  transform: scale(1.035);
+  transition: opacity 700ms ease, transform 6s ease;
+}
+
+.scroll-morph-slide-image.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.scroll-morph-controls {
+  position: absolute;
+  z-index: 4;
+  right: 28px;
+  bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.scroll-morph-controls .scroll-morph-index {
+  position: static;
+  margin-right: 5px;
+}
+
+.scroll-morph-dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.scroll-morph-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: width 180ms ease, background-color 180ms ease;
+}
+
+.scroll-morph-dot.is-active {
+  width: 22px;
+  border-radius: 5px;
+  background: #dce94d;
+}
+
+.scroll-morph-arrow {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.64);
+  border-radius: 50%;
+  background: rgba(13, 35, 25, 0.28);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.scroll-morph-arrow:hover {
+  background: #dce94d;
+  color: #173b2d;
+}
+
+.scroll-morph-arrow:focus-visible,
+.scroll-morph-dot:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.scroll-morph-shade {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(12, 30, 22, 0.72), rgba(12, 30, 22, 0.18) 62%, rgba(12, 30, 22, 0.08)),
+    linear-gradient(0deg, rgba(12, 30, 22, 0.25), transparent 45%);
+  pointer-events: none;
+}
+
+.scroll-morph-copy {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: clamp(32px, 10vw, 142px);
+  max-width: 590px;
+  transform: translateY(calc(-50% + var(--morph-copy-shift, 0px)));
+}
+
+.scroll-morph-kicker {
+  display: flex;
+  margin: 0 0 26px;
+  align-items: center;
+  gap: 11px;
+  color: #e2e9da;
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.scroll-morph-kicker span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #dce94d;
+}
+
+.scroll-morph-copy h1 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(68px, 9vw, 126px);
+  font-weight: 400;
+  line-height: 0.91;
+}
+
+.scroll-morph-copy h1 em {
+  color: #dce94d;
+  font-weight: 400;
+}
+
+.scroll-morph-description {
+  max-width: 390px;
+  margin: 24px 0 25px;
+  color: #f0f1e9;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.scroll-morph-link {
+  display: inline-flex;
+  min-height: 48px;
+  padding: 0 18px;
+  align-items: center;
+  gap: 26px;
+  background: #dce94d;
+  color: #173b2d;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.scroll-morph-link span {
+  font-size: 17px;
+}
+
+.scroll-morph-hero > .scroll-morph-index {
+  position: absolute;
+  z-index: 3;
+  right: 30px;
+  bottom: 26px;
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 700px) {
+  .scroll-morph-frame {
+    width: calc(100% - 24px);
+    height: 760px;
+    max-height: calc(100svh - 96px);
+    min-height: 560px;
+    margin: 12px auto;
+  }
+
+  .scroll-morph-copy {
+    top: 43%;
+    right: 25px;
+    left: 28px;
+  }
+
+  .scroll-morph-copy h1 {
+    font-size: clamp(62px, 16vw, 88px);
+  }
+
+  .scroll-morph-description {
+    max-width: 320px;
+    font-size: 14px;
+  }
+
+  .scroll-morph-image {
+    inset: var(--morph-inset-y, 5%) var(--morph-inset-x, 5%);
+  }
+
+  .scroll-morph-controls {
+    right: 12px;
+    bottom: 14px;
+    gap: 8px;
+  }
+
+  .scroll-morph-controls .scroll-morph-index {
+    margin-right: 0;
+  }
+
+  .scroll-morph-arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .scroll-morph-dots {
+    gap: 5px;
+  }
+
+  .scroll-morph-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .scroll-morph-dot.is-active {
+    width: 17px;
+  }
+
+  .scroll-morph-shade {
+    background: linear-gradient(90deg, rgba(12, 30, 22, 0.68), rgba(12, 30, 22, 0.14)),
+      linear-gradient(0deg, rgba(12, 30, 22, 0.24), transparent 55%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-morph-slide-image,
+  .scroll-morph-dot,
+  .scroll-morph-arrow {
+    transition: none;
+  }
+
+  .scroll-morph-image {
+    inset: 0;
+    border-radius: 0;
+    will-change: auto;
+  }
+
+  .scroll-morph-copy {
+    transform: translateY(-50%);
+  }
+}

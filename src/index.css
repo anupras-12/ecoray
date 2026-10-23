@@ -1,0 +1,74 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root {
+	--radius: 0.5rem;
+}
+
+.dark {
+	--sidebar-ring: oklch(0.439 0 0);
+}
+
+.home-page > * + * {
+	border-top: 1px solid #e3e9e0;
+}
+
+.home-page section {
+	padding-block: clamp(2.5rem, 5vw, 3.75rem);
+}
+
+.eco-comparison {
+	background:
+		radial-gradient(ellipse at 12% 8%, rgba(220, 233, 77, 0.17), transparent 28rem),
+		#f5f7ef;
+	color: #20382d;
+	font-family: 'Avenir Next', Avenir, 'Segoe UI', sans-serif;
+}
+
+.eco-comparison-card {
+	border: 2px solid #20382d;
+	border-radius: 4px;
+	background: #fffef8;
+	box-shadow: 6px 6px 0 #20382d;
+}
+
+.eco-comparison-header {
+	border-bottom: 2px solid #20382d;
+	background: #e6edce;
+}
+
+.eco-comparison-title {
+	color: #173b2d;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: clamp(30px, 3.8vw, 42px);
+	font-weight: 400;
+	line-height: 1.1;
+}
+
+.eco-comparison .retro {
+	font-family: 'Avenir Next', Avenir, 'Segoe UI', sans-serif;
+	letter-spacing: 0;
+	line-height: 1.5;
+}
+
+.eco-comparison-row + .eco-comparison-row {
+	border-top: 1px dashed #cbd4c5;
+}
+
+.eco-comparison-feature {
+	color: #20382d;
+}
+
+.eco-comparison-value {
+	color: #315440;
+}
+
+.eco-comparison-muted {
+	color: #718074;
+}
+
+@media (max-width: 767px) {
+	.eco-comparison-card {
+		box-shadow: 4px 4px 0 #20382d;
+	}
+}
